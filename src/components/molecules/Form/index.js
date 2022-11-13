@@ -16,6 +16,15 @@ const Form = ({ submitSearch }) => {
     submitSearch(location);
   };
 
+  const showPosition = (e) => {
+    submitSearch({
+      long: e.coords.longitude,
+      lat: e.coords.latitude,
+    });
+
+    // console.log(e);
+  };
+
   return (
     <form onSubmit={onSubmit}>
       <input
@@ -27,6 +36,20 @@ const Form = ({ submitSearch }) => {
         value={location}
         onChange={(e) => setLocation(e.target.value)}
       />
+
+      <button
+        type="button"
+        className={styles.button}
+        onClick={() => {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+          } else {
+            console.log("error");
+          }
+        }}
+      >
+        Navigator
+      </button>
 
       <button type="submit" className={styles.button} onClick={onSubmit}>
         SEARCH

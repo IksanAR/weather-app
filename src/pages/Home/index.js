@@ -10,7 +10,7 @@ const Home = () => {
 
   const onSubmit = (value) => {
     //call fn
-    submitRequest({ value });
+    submitRequest(value);
   };
 
   return (
@@ -26,7 +26,7 @@ const Home = () => {
         {isLoading && <Loader />}
       </div>
       {/* forecast */}
-      {forecast && <Forecast />}
+      {forecast && <Forecast data={forecast} />}
     </>
   );
 };
