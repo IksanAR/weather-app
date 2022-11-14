@@ -17,16 +17,18 @@ const Home = () => {
     <>
       {/* header */}
       <Header />
-      <div className={styles.box}>
-        {/* form */}
-        {!isLoading && <Form submitSearch={onSubmit} />}
-        {/* error */}
-        {isError && <Error message={isError} />}
-        {/* loader */}
-        {isLoading && <Loader />}
-      </div>
+      {!forecast && (
+        <div className={styles.box}>
+          {/* form */}
+          {!isLoading && <Form submitSearch={onSubmit} />}
+          {/* error */}
+          {isError && <Error message={isError} />}
+          {/* loader */}
+          {isLoading && <Loader />}
+        </div>
+      )}
       {/* forecast */}
-      {forecast && <Forecast data={forecast} />}
+      {forecast && <Forecast forecast={forecast} />}
     </>
   );
 };
