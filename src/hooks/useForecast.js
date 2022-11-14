@@ -32,7 +32,7 @@ const useForecast = () => {
       setforecast(data);
       setforecastdaily(dataDaily);
 
-      // console.log({ dataDaily });
+      console.log(data);
     } catch (error) {
       // console.log(error);
       setError(error.message);
