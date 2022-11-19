@@ -30,8 +30,8 @@ const useForecast = () => {
       const data = await axios(url);
       const { data: dataDaily } = await axios(urlDaily);
       console.log(data);
-      // setforecast(data);
-      // setforecastdaily(dataDaily);
+      setforecast(data);
+      setforecastdaily(dataDaily);
 
       console.log(data);
       console.log(dataDaily);
