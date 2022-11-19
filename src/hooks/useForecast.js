@@ -27,15 +27,17 @@ const useForecast = () => {
 
     try {
       setLoading(true);
-      const { data } = await axios(url);
+      const data = await axios(url);
       const { data: dataDaily } = await axios(urlDaily);
+      console.log(data);
       setforecast(data);
       setforecastdaily(dataDaily);
 
       console.log(data);
+      console.log(dataDaily);
     } catch (error) {
       // console.log(error);
-      setError(error.message);
+      setError("There no match location");
     } finally {
       setLoading(false);
     }
