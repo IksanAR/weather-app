@@ -6,7 +6,8 @@ import styles from "./Home.module.css";
 
 const Home = () => {
   //return from hooks
-  const { isError, isLoading, forecast, submitRequest } = useForecast();
+  const { isError, isLoading, forecast, forecastdaily, submitRequest } =
+    useForecast();
 
   const onSubmit = (value) => {
     //call fn
@@ -26,7 +27,9 @@ const Home = () => {
         {isLoading && <Loader />}
       </div>
       {/* forecast */}
-      {forecast && <Forecast />}
+      {forecast && (
+        <Forecast forecast={forecast} forecastdaily={forecastdaily} />
+      )}
       {/* {forecast && <Forecast forecast={forecast} />} */}
     </>
   );
