@@ -17,24 +17,24 @@ const useForecast = () => {
   const submitRequest = async (location) => {
     console.log(location);
     //
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=${apiKey}`;
-    let urlDaily = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&APPID=${apiKey}`;
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&APPID=${apiKey}`;
+    let urlDaily = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=metric&cnt=8&APPID=${apiKey}`;
     // let url2 =
     if (typeof location == "object") {
-      url = `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.long}&appid=${apiKey}`;
-      urlDaily = `https://api.openweathermap.org/data/2.5/forecast?lat=${location.lat}&lon=${location.long}&appid=${apiKey}`;
+      url = `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.long}&units=metric&appid=${apiKey}`;
+      urlDaily = `https://api.openweathermap.org/data/2.5/forecast?lat=${location.lat}&lon=${location.long}&units=metric&cnt=8&appid=${apiKey}`;
     }
 
     try {
       setLoading(true);
-      const data = await axios(url);
+      const { data } = await axios(url);
       const { data: dataDaily } = await axios(urlDaily);
-      console.log(data);
+      // console.log(data);
       setforecast(data);
       setforecastdaily(dataDaily);
 
-      console.log(data);
-      console.log(dataDaily);
+      // console.log(data);
+      // console.log(dataDaily);
     } catch (error) {
       // console.log(error);
       setError("There no match location");
